@@ -1,0 +1,64 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  background: #f4f4f4;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+button {
+  cursor: pointer;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loading:after {
+  content: '';
+  border: 4px solid #ccc;
+  border-top: 4px solid #3e3c3a;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin 0.8s linear infinite;
+}
+
+.button {
+  border: 0;
+  background: #333;
+  font-weight: bold;
+  color: #f4f4f4;
+  font-size: 12px;
+  padding: 8px 20px;
+  border-radius: 15px;
+  letter-spacing: 0.8px;
+  margin: 4px 0;
+}
+
+.toHome {
+  position: fixed;
+  top: 5px;
+  right: 12px;
+}
+
+.no-data {
+  text-align: center;
+  color: #999;
+  font-size: 24px;
+  margin: 40px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
