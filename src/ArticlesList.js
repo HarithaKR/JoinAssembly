@@ -18,17 +18,22 @@ const ArticlesList = (props) => {
       let searchTerm = e.target.value;
       if (searchTerm) {
         let data = allData.filter((item) => {
-          let pattern = new RegExp(searchTerm, 'i');
+          let pattern = new RegExp(searchTerm, 'gi');
           let title = item.data.title;
+          let matchedTitle = '';
           let matchedWords = title.match(pattern);
+          let splittedWords = title.split(pattern);
           if (matchedWords && matchedWords.length) {
-            matchedWords.forEach((word) => {
-              title = title.replace(
-                word,
-                `<span class="highlight">${word}</span>`
-              );
+            splittedWords.forEach((word, index) => {
+              if (index < splittedWords.length) {
+                matchedTitle += matchedWords[index]
+                  ? word.concat(
+                      `<span class="highlight">${matchedWords[index]}</span>`
+                    )
+                  : word;
+              }
             });
-            item.data['matchedTitle'] = title;
+            item.data['matchedTitle'] = matchedTitle;
             return item;
           }
         });
